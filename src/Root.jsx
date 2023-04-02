@@ -14,7 +14,7 @@ export default function Root() {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const navItems = ["Home", "About", "Contact"];
+  const navItems = ["Cart","Home", "About", "Contact"];
 
   //darkmood functions
   const [mode, setMode] = useState(
