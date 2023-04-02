@@ -134,7 +134,7 @@ export default function Cart() {
       <Paper sx={{ width: "200px", mx: "auto", p: "10px" }}>
         <Stack direction="row" sx={{ justifyContent: "space-between", my: 2 }}>
           <Typography>subTotal price</Typography>
-          <Typography>$ {totalPrice}</Typography>
+          <Typography>$ {totalPrice.toFixed(2)}</Typography>
         </Stack>
         <Stack direction="row" sx={{ justifyContent: "space-between", my: 2 }}>
           <Typography>pieces </Typography>
