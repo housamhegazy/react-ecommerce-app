@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
-import { indigo } from "@mui/material/colors";
+import { indigo, teal } from "@mui/material/colors";
 
 export default function Navbar({
   handleDrawerToggle,
@@ -74,12 +74,13 @@ export default function Navbar({
               }}
               key={item.name}
               sx={{
-                backgroundColor: location.pathname === item.path ? theme.palette.primary.main : null,
+                backgroundColor: location.pathname === item.path ? teal[900] : null,
                 color: "#fff",
-                '&:hover':{backgroundColor:theme.palette.primary.main}
+                '&:hover':{backgroundColor:teal[900]}
               }}
             >
               {item.name}
+              {item.icon}
             </Button>
           ))}
         </Box>

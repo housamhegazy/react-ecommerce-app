@@ -4,6 +4,18 @@ import Navbar from "./components/Navbar";
 import React, { useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { getDesignTokens } from "./styles/theme";
+import { ShoppingCart } from "@mui/icons-material";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import { useSelector, useDispatch } from "react-redux";
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
 //drawer width
 const drawerWidth = 240;
 export default function Root() {
@@ -13,9 +25,19 @@ export default function Root() {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  // @ts-ignore
+  const { insertedProducts } = useSelector((state) => state.counter);
 
   const navItems = [
-    { name: "Cart", path: "/cart" },
+    {
+      name: "cart",
+      path: "/cart",
+      icon: (
+        <StyledBadge badgeContent={insertedProducts.length} color="secondary">
+          <ShoppingCart />
+        </StyledBadge>
+      ),
+    },
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
@@ -53,7 +75,9 @@ export default function Root() {
           drawerWidth,
         }}
       />
-      <Drawerr {...{ theme,navItems, handleDrawerToggle, mobileOpen, drawerWidth }} />
+      <Drawerr
+        {...{ theme, navItems, handleDrawerToggle, mobileOpen, drawerWidth }}
+      />
       <Box sx={{ px: 2, py: 4 }}>
         <Outlet />
       </Box>

@@ -1,5 +1,5 @@
-import { Box, Typography, Divider, List, ListItem, ListItemButton, ListItemText, Drawer } from '@mui/material';
-import { indigo } from '@mui/material/colors';
+import { Box, Typography, Divider, List, ListItem, ListItemButton, ListItemText, Drawer, ListItemIcon } from '@mui/material';
+import { indigo, teal } from '@mui/material/colors';
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -19,12 +19,15 @@ export default function Drawerr({handleDrawerToggle,mobileOpen,drawerWidth,navIt
                 navigate(item.path);
               }}
               sx={{
-                backgroundColor: location.pathname === item.path && theme.palette.primary.main,
+                backgroundColor: location.pathname === item.path && teal[900],
                 color: "#fff",
-                '&:hover':{backgroundColor:theme.palette.primary.main}
+                '&:hover':{backgroundColor:teal[900]}
               }}
               key={item.name} disablePadding>
                 <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemIcon>
+                {item.icon}
+                </ListItemIcon>
                   <ListItemText primary={item.name} />
                 </ListItemButton>
               </ListItem>
