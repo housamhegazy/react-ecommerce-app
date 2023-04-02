@@ -77,6 +77,7 @@ export default function Home() {
                 {item.title}
               </Typography>
               <CardMedia
+              sx={{cursor:"pointer"}}
                 onClick={() => {
                   navigate(`ProductDetails/${item.id}`);
                 }}
