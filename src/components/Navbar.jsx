@@ -6,7 +6,8 @@ import {
   Box,
   Button,
 } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import { indigo } from "@mui/material/colors";
@@ -15,11 +16,16 @@ export default function Navbar({
   handleDrawerToggle,
   theme,
   changeMode,
-  navItems
-
+  navItems,
 }) {
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
-    <AppBar position="sticky" component="nav" sx={{backgroundColor:indigo[900]}}>
+    <AppBar
+      position="sticky"
+      component="nav"
+      sx={{ backgroundColor: indigo[900] }}
+    >
       <Toolbar>
         <IconButton
           color="inherit"
@@ -38,9 +44,6 @@ export default function Navbar({
           hegazy
         </Typography>
 
-
-
-
         <Box
           sx={{
             display: "flex",
@@ -51,29 +54,32 @@ export default function Navbar({
             px: 1,
           }}
         >
-          {theme.palette.mode} 
+          {theme.palette.mode}
           <IconButton
             sx={{ ml: 1 }}
-            onClick={()=>{
-                changeMode()
+            onClick={() => {
+              changeMode();
             }}
             color="inherit"
           >
-            {theme.palette.mode === "dark" ? (
-              <Brightness7 />
-            ) : (
-              <Brightness4 />
-            )}
+            {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
         </Box>
 
-
-
-
         <Box sx={{ display: { xs: "none", sm: "block" } }}>
           {navItems.map((item) => (
-            <Button key={item} sx={{ color: "#fff" }}>
-              {item}
+            <Button
+              onClick={() => {
+                navigate(item.path);
+              }}
+              key={item.name}
+              sx={{
+                backgroundColor: location.pathname === item.path ? theme.palette.primary.main : null,
+                color: "#fff",
+                '&:hover':{backgroundColor:theme.palette.primary.main}
+              }}
+            >
+              {item.name}
             </Button>
           ))}
         </Box>

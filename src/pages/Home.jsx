@@ -16,9 +16,14 @@ import { useGetProductsByNameQuery } from "../Redux/productsApi";
 import { red } from "@mui/material/colors";
 import { Add, Favorite, MoreVert, Remove, Share } from "@mui/icons-material";
 import { Box } from "@mui/system";
+import { addToCart } from "Redux/productsSlice";
 
+import { useSelector, useDispatch } from 'react-redux'
 export default function Home() {
   const { data, error, isLoading } = useGetProductsByNameQuery();
+  // @ts-ignore
+  const {productsinCart} = useSelector((state) => state.counter)
+  const dispatch = useDispatch()
   if (isLoading) {
     return <Typography>loading .........</Typography>;
   }
@@ -76,12 +81,14 @@ export default function Home() {
                 </IconButton>
 
                 {/* add button  */}
-                {false && (
-                  <Button sx={{ ml: "10px" }} size="small" variant="contained">
+                {true && (
+                  <Button onClick={()=>{
+                    dispatch(addToCart(item))
+                  }} sx={{ ml: "10px" }} size="small" variant="contained">
                     add to cart
                   </Button>
                 )}
-                {true && (
+                {false && (
                   <Stack
                     direction={"row"}
                     sx={{

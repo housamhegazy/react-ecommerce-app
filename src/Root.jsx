@@ -14,7 +14,12 @@ export default function Root() {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const navItems = ["Cart","Home", "About", "Contact"];
+  const navItems = [
+    { name: "Cart", path: "/cart" },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   //darkmood functions
   const [mode, setMode] = useState(
@@ -48,8 +53,8 @@ export default function Root() {
           drawerWidth,
         }}
       />
-      <Drawerr {...{ navItems, handleDrawerToggle, mobileOpen, drawerWidth }} />
-      <Box sx={{ px: 2, py: 4}}>
+      <Drawerr {...{ theme,navItems, handleDrawerToggle, mobileOpen, drawerWidth }} />
+      <Box sx={{ px: 2, py: 4 }}>
         <Outlet />
       </Box>
     </ThemeProvider>
