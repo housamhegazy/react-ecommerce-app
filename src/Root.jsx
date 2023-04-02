@@ -41,6 +41,7 @@ export default function Root() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
+    { name: "Favorite", path: "/fovaritepage" },
   ];
 
   //darkmood functions
