@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Badge,
   Button,
   Card,
@@ -11,28 +10,43 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useGetProductsByNameQuery } from "../Redux/productsApi";
 import { Add, Favorite, MoreVert, Remove, Share } from "@mui/icons-material";
 import { Box } from "@mui/system";
-import { addToCart, decreaseProducts, increaseProducts } from "Redux/productsSlice";
+import {
+  addToCart,
+  addtofavorite,
+  decreaseProducts,
+  increaseProducts,
+  removefavorite
+} from "Redux/productsSlice";
 
 import { useSelector, useDispatch } from "react-redux";
+import Loading from "./LoadingPage";
+import Errorpage from "./Errorpage";
 export default function Home() {
   const { data, error, isLoading } = useGetProductsByNameQuery();
-  // @ts-ignore
-  const { insertedProducts } = useSelector((state) => state.counter);
+  
+  const { insertedProducts, favoritProducts } = useSelector(
+    // @ts-ignore
+    (state) => state.counter
+  );
 
   const dispatch = useDispatch();
-  const QuantityFunc = (id)=>{
-    const selectedProduct = insertedProducts.find((product)=>{return product.id === id })
-    return selectedProduct.Quantity
-  }
+  const navigate = useNavigate();
+
+  const QuantityFunc = (id) => {
+    const selectedProduct = insertedProducts.find((product) => {
+      return product.id === id;
+    });
+    return selectedProduct.Quantity;
+  };
   if (isLoading) {
-    return <Typography>loading .........</Typography>;
+    return <Loading />;
   }
   if (error) {
-    return <Typography>error .........</Typography>;
+    return <Errorpage />;
   }
   if (data) {
     return (
@@ -63,27 +77,41 @@ export default function Home() {
                 {item.title}
               </Typography>
               <CardMedia
+                onClick={() => {
+                  navigate(`ProductDetails/${item.id}`);
+                }}
                 component="img"
                 height="194"
-                image={item.url}
+                image={item.image}
                 alt="Paella dish"
               />
               <CardContent sx={{ height: "100px", overflow: "hidden" }}>
                 <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal
-                  to cook together with your guests. Add 1 cup of frozen peas
-                  along with the mussels, if you like.
+                  {item.description}
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <Favorite />
+                <IconButton
+                  onClick={() => {
+                    favoritProducts.find((ele) => {return ele.id === item.id}) ?
+                    dispatch(removefavorite(item))
+                    :
+                    dispatch(addtofavorite(item))
+                  }}
+                  aria-label="add to favorites"
+                >
+                  {favoritProducts.find((ele) => ele.id === item.id) ? (
+                    <Favorite color="error" />
+                  ) : (
+                    <Favorite />
+                  )}
                 </IconButton>
+
                 <IconButton aria-label="share">
                   <Share />
                 </IconButton>
                 <Stack sx={{ flexGrow: 1 }} />
-                <Typography>$ 1000</Typography>
+                <Typography>$ {item.price}</Typography>
               </CardActions>
 
               <Box
@@ -104,9 +132,12 @@ export default function Home() {
                       ml: "10px",
                     }}
                   >
-                    <IconButton onClick={()=>{
-                      dispatch(decreaseProducts(item))
-                    }} aria-label="remove">
+                    <IconButton
+                      onClick={() => {
+                        dispatch(decreaseProducts(item));
+                      }}
+                      aria-label="remove"
+                    >
                       <Remove />
                     </IconButton>
 
@@ -115,9 +146,12 @@ export default function Home() {
                       badgeContent={QuantityFunc(item.id)}
                       color="primary"
                     />
-                    <IconButton onClick={()=>{
-                      dispatch(increaseProducts(item))
-                    }} aria-label="add">
+                    <IconButton
+                      onClick={() => {
+                        dispatch(increaseProducts(item));
+                      }}
+                      aria-label="add"
+                    >
                       <Add />
                     </IconButton>
                   </Stack>

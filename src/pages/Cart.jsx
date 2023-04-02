@@ -21,6 +21,8 @@ export default function Cart() {
     const selectedProduct = insertedProducts.find((product)=>{return product.id === id })
     return Number(selectedProduct.Quantity)
   }
+  let totalPrice = 0;
+  let totalQuantity = 0;
   return (
     <Box>
       {/* <Helmet>
@@ -28,8 +30,8 @@ export default function Cart() {
           <meta name="products" content={"largest store in usa"} />
         </Helmet> */}
       {insertedProducts.map((item) => {
-          // totalPrice += price * Quantity 
-          // totalQuantity += Quantity
+          totalPrice += item.price * item.Quantity 
+          totalQuantity += item.Quantity
         return (
           <Paper
             key={item.id}
@@ -110,11 +112,11 @@ export default function Cart() {
               </Button>
             )}
 
-            <Typography sx={{fontSize:{xs:"14px",sm:"16px"}}}>$ {'1000'} </Typography>
+            <Typography sx={{fontSize:{xs:"14px",sm:"16px"}}}>$ {item.price * item.Quantity} </Typography>
             <img
-              style={{ height: "70px" }}
+              style={{ maxHeight: "70px" ,width:"70px"}}
               alt={'product'}
-              src={item.url}
+              src={item.image}
             />
           </Paper>
         );
@@ -122,11 +124,11 @@ export default function Cart() {
       <Paper sx={{width:"200px",mx:"auto",p:"10px"}}>
         <Stack direction='row' sx={{justifyContent:"space-between",my:2}}>
           <Typography>subTotal price</Typography>
-          <Typography>$ 1000</Typography>
+          <Typography>$ {totalPrice}</Typography>
         </Stack>
         <Stack direction='row' sx={{justifyContent:"space-between",my:2}}>
           <Typography>pieces </Typography>
-          <Typography>{'3000'}</Typography>
+          <Typography>{totalQuantity}</Typography>
         </Stack>
         <Button sx={{mt:2,mx:"auto",display:'block'}} variant='contained'>checkOut</Button>
       </Paper>

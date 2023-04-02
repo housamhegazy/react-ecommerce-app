@@ -7,6 +7,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Cart from "pages/Cart";
+import ProductDetails from "pages/ProductDetails";
+import Errorpage from "pages/Errorpage";
+import FovaritePage from "pages/FovaritePage";
 
 
 const router = createBrowserRouter(
@@ -14,7 +17,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<Root />}>
       <Route index element={<Home />} />
       <Route path="cart" element={<Cart />} />
-      <Route path='*' element={<div>error</div>} />
+      <Route path="ProductDetails/:id" element={<ProductDetails />} />
+      <Route path="fovaritepage" element={<FovaritePage />} />
+      <Route path='*' element={<Errorpage/>} />
       
       {/* ... etc. */}
     </Route>
