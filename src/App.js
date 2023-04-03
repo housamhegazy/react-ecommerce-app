@@ -10,6 +10,7 @@ import Cart from "pages/Cart";
 import ProductDetails from "pages/ProductDetails";
 import Errorpage from "pages/Errorpage";
 import FovaritePage from "pages/FovaritePage";
+import CategoriesPage from "pages/categoriesPage";
 
 
 const router = createBrowserRouter(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path="cart" element={<Cart />} />
       <Route path="ProductDetails/:id" element={<ProductDetails />} />
       <Route path="fovaritepage" element={<FovaritePage />} />
+      <Route path="products/categories/:name" element={<CategoriesPage />} />
       <Route path='*' element={<Errorpage/>} />
       
       {/* ... etc. */}

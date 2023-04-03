@@ -15,7 +15,7 @@ import Loading from "./LoadingPage";
 import Errorpage from "./Errorpage";
 export default function ProductDetails() {
   const param = useParams();
-  console.log(Number(param.id));
+  
   const { data, error, isLoading } = useGetproductDetailsApiByNameQuery(
     Number(param.id)
   );

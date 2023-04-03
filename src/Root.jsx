@@ -4,10 +4,10 @@ import Navbar from "./components/Navbar";
 import React, { useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { getDesignTokens } from "./styles/theme";
-import { ShoppingCart } from "@mui/icons-material";
+import {  Favorite, Home, ShoppingCart } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
@@ -38,10 +38,8 @@ export default function Root() {
         </StyledBadge>
       ),
     },
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
-    { name: "Favorite", path: "/fovaritepage" },
+    { name: "Home", path: "/",icon:<Home/> },
+    { name: "Favorite", path: "/fovaritepage" ,icon:<Favorite/>},
   ];
 
   //darkmood functions

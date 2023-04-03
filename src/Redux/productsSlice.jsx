@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { json } from "react-router-dom";
-import { productsApi } from "./productsApi";
 
 const initialState = {
   insertedProducts: JSON.parse(localStorage.getItem("cart")) || [],
