@@ -5,7 +5,6 @@ import {
   ListItemText,
   useTheme
 } from "@mui/material";
-import { teal } from "@mui/material/colors";
 import Errorpage from "pages/Errorpage";
 import Loading from "pages/LoadingPage";
 import React from "react";

@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Loading from "./LoadingPage";
 import Errorpage from "./Errorpage";
 import Products from "components/Products";
+import { Helmet } from 'react-helmet-async';
+
 export default function Home() {
   const { data, error, isLoading } = useGetProductsByNameQuery();
 
@@ -31,7 +33,13 @@ export default function Home() {
   }
   if (data) {
     return (
+      <>
+      <Helmet>
+      <title>Home</title>
+      <meta name="description" content={"the largest store in saudi arabia"} />
+    </Helmet>
       <Products {...{data,navigate,favoritProducts,dispatch,insertedProducts,QuantityFunc}}/>
+      </>
     );
   }
 }

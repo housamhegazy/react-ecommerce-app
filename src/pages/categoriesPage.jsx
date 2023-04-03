@@ -5,6 +5,8 @@ import Errorpage from "./Errorpage";
 import Loading from "./LoadingPage";
 import { useSelector, useDispatch } from "react-redux";
 import Products from "components/Products";
+import { Helmet } from "react-helmet-async";
+
 export default function CategoriesPage() {
   const param = useParams();
   const { data, error, isLoading } = useGetcategoryApiByNameQuery(param.name);
@@ -32,16 +34,22 @@ export default function CategoriesPage() {
   }
   if (data) {
     return (
-      <Products
-        {...{
-          data,
-          navigate,
-          favoritProducts,
-          dispatch,
-          insertedProducts,
-          QuantityFunc,
-        }}
-      />
+      <>
+        <Helmet>
+          <title>product details</title>
+          <meta name="product details" content={data.description} />
+        </Helmet>
+        <Products
+          {...{
+            data,
+            navigate,
+            favoritProducts,
+            dispatch,
+            insertedProducts,
+            QuantityFunc,
+          }}
+        />
+      </>
     );
   }
 }

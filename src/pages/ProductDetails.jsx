@@ -1,5 +1,4 @@
 import "./productDetails.css";
-import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 // import DetailsThumb from "./productDetailsThumb";
@@ -13,6 +12,8 @@ import {
 } from "Redux/productsSlice";
 import Loading from "./LoadingPage";
 import Errorpage from "./Errorpage";
+import { Helmet } from 'react-helmet-async';
+
 export default function ProductDetails() {
   const param = useParams();
   
@@ -28,16 +29,6 @@ export default function ProductDetails() {
     const myproduct = insertedProducts.find((product) => product.id === id);
     return myproduct.Quantity;
   };
-  const [index, setIndex] = useState(0);
-  const myRef = useRef(null);
-  const handleTab = (index) => {
-    setIndex(index);
-    const images = myRef.current.children;
-    for (let i = 0; i < images.length; i++) {
-      images[i].className = images[i].className.replace("active", "");
-    }
-    images[index].className = "active";
-  };
   if (isLoading) {
     return (
       <Loading/>
@@ -49,13 +40,12 @@ export default function ProductDetails() {
     );
   }
   if (data) {
-    console.log(data)
     return (
       <div className="app productdetails">
-        {/* <Helmet>
+        <Helmet>
             <title>product details</title>
             <meta name="product details" content={data.description} />
-          </Helmet> */}
+          </Helmet>
         <div className="details" key={data.id}>
           <div className="big-img">
             <img src={data.image} alt="" />
@@ -66,11 +56,9 @@ export default function ProductDetails() {
               <h2>{data.title}</h2>
               <span>${data.price}</span>
             </div>
-            {/* <Colors colors={data.colors} /> */}
   
             <p>{data.description}</p>
   
-            {/* <DetailsThumb images={data.image} tab={handleTab} myRef={myRef} /> */}
             {insertedProducts.find((product) => product.id === data.id) ? (
               <Stack direction="row" sx={{ alignItems: "center", mt: 3 }}>
                 <Button

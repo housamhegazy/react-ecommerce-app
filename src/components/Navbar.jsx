@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
-import { indigo, teal } from "@mui/material/colors";
+import { indigo } from "@mui/material/colors";
 //menu
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";

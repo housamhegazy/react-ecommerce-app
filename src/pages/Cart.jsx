@@ -12,7 +12,7 @@ import {
 } from "Redux/productsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 export default function Cart() {
   // @ts-ignore
   const { insertedProducts } = useSelector((state) => state.counter);
@@ -28,10 +28,10 @@ export default function Cart() {
   let totalQuantity = 0;
   return (
     <Box>
-      {/* <Helmet>
-          <title>META Cart</title>
+      <Helmet>
+          <title> Cart</title>
           <meta name="products" content={"largest store in usa"} />
-        </Helmet> */}
+        </Helmet>
       {insertedProducts.map((item) => {
         totalPrice += item.price * item.Quantity;
         totalQuantity += item.Quantity;

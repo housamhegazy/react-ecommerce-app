@@ -9,7 +9,7 @@ import {
   Drawer,
   ListItemIcon,
 } from "@mui/material";
-import { indigo, teal } from "@mui/material/colors";
+import { indigo } from "@mui/material/colors";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";

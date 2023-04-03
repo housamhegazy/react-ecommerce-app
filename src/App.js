@@ -13,6 +13,7 @@ import FovaritePage from "pages/FovaritePage";
 import CategoriesPage from "pages/categoriesPage";
 
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
