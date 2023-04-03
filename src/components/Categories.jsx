@@ -3,6 +3,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  useTheme
 } from "@mui/material";
 import { teal } from "@mui/material/colors";
 import Errorpage from "pages/Errorpage";
@@ -13,6 +14,7 @@ import { useGetproductCategoryApiByNameQuery } from "Redux/productsApi";
 export default function Categories({ handleDrawerToggle }) {
   const { data, error, isLoading } = useGetproductCategoryApiByNameQuery();
   const navigate = useNavigate();
+  const theme = useTheme();
   if (isLoading) {
     return <Loading />;
   }
@@ -34,7 +36,7 @@ export default function Categories({ handleDrawerToggle }) {
                 // backgroundColor: location.pathname === item.path && teal[900],
                 
                 color: "#fff",
-                "&:hover": { backgroundColor: teal[900] },
+                "&:hover": { backgroundColor: theme.palette.primary.main },
               }}
               key={cate}
               disablePadding

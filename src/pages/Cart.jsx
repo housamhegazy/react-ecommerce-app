@@ -11,11 +11,13 @@ import {
   deleteProducts,
 } from "Redux/productsSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 // import { Helmet } from "react-helmet-async";
 export default function Cart() {
   // @ts-ignore
   const { insertedProducts } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
+  const navigate=useNavigate()
   const QuantityFunc = (id) => {
     const selectedProduct = insertedProducts.find((product) => {
       return product.id === id;
@@ -121,10 +123,13 @@ export default function Cart() {
             )}
 
             <Typography sx={{ fontSize: { xs: "14px", sm: "16px" } }}>
-              $ {item.price * item.Quantity}{" "}
+              $ {item.price * item.Quantity.toFixed(2)}{" "}
             </Typography>
             <img
-              style={{ maxHeight: "70px", width: "70px" }}
+             onClick={() => {
+              navigate(`/ProductDetails/${item.id}`);
+            }}
+              style={{ maxHeight: "70px", width: "70px",cursor:"pointer" }}
               alt={"product"}
               src={item.image}
             />
@@ -133,7 +138,7 @@ export default function Cart() {
       })}
       <Paper sx={{ width: "200px", mx: "auto", p: "10px" }}>
         <Stack direction="row" sx={{ justifyContent: "space-between", my: 2 }}>
-          <Typography>subTotal price</Typography>
+          <Typography>Total price</Typography>
           <Typography>$ {totalPrice.toFixed(2)}</Typography>
         </Stack>
         <Stack direction="row" sx={{ justifyContent: "space-between", my: 2 }}>

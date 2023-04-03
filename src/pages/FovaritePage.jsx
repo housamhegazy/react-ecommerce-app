@@ -1,16 +1,9 @@
 import {
-  Delete,
-  Remove,
-  Add,
-  ShoppingCart,
   Favorite,
 } from "@mui/icons-material";
 import {
-  Badge,
-  Button,
   IconButton,
   Paper,
-  Stack,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -18,10 +11,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  deleteProducts,
-  decreaseProducts,
-  increaseProducts,
-  addToCart,
   removefavorite,
   addtofavorite,
 } from "Redux/productsSlice";
@@ -29,7 +18,8 @@ export default function FovaritePage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // @ts-ignore
-  const { insertedProducts, favoritProducts } = useSelector(
+  const {  favoritProducts } = useSelector(
+    // @ts-ignore
     (state) => state.counter
   );
   return (

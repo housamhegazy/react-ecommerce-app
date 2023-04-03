@@ -37,9 +37,9 @@ export default function Drawerr({
               handleDrawerToggle()
             }}
             sx={{
-              backgroundColor: location.pathname === item.path && teal[900],
+              backgroundColor: location.pathname === item.path && theme.palette.primary.main,
               color: "#fff",
-              "&:hover": { backgroundColor: teal[900] },
+              "&:hover": { backgroundColor: theme.palette.primary.main },
             }}
             key={item.name}
             disablePadding
@@ -76,7 +76,7 @@ export default function Drawerr({
       {drawer}
       <Divider color='white'/>
       <Typography
-        sx={{ backgroundColor:teal[600],fontSize:"20px", textWeight: "bold" ,color:"white",p:1}}
+        sx={{ fontSize:"20px", textWeight: "bold" ,color:"white",p:1}}
       >
         Categories
       </Typography>

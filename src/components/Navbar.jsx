@@ -145,10 +145,10 @@ export default function Navbar({
                     ? 'black'
                     : "#fff",
                 
-                "&:hover": { backgroundColor: theme.palette.primary.main },
+                "&:hover": { backgroundColor: theme.palette.primary.main ,color:"black"},
               }}
             >
-              {item.name}
+              {item.path !== "/cart" && item.name}
               {item.path === "/cart" && item.icon}
             </Button>
           ))}

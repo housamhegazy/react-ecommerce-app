@@ -103,7 +103,6 @@ export default function Products({data,navigate,favoritProducts,dispatch,inserte
                     sx={{
                       justifyContent: "center",
                       alignItems: "center",
-                      ml: "10px",
                     }}
                   >
                     <IconButton
@@ -131,6 +130,7 @@ export default function Products({data,navigate,favoritProducts,dispatch,inserte
                   </Stack>
                 ) : (
                   <Button
+                  sx={{height:"40px"}}
                     onClick={() => {
                       dispatch(addToCart(item));
                     }}

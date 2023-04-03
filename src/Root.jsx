@@ -29,6 +29,7 @@ export default function Root() {
   const { insertedProducts } = useSelector((state) => state.counter);
 
   const navItems = [
+    { name: "Home", path: "/",icon:<Home/> },
     {
       name: "cart",
       path: "/cart",
@@ -38,7 +39,7 @@ export default function Root() {
         </StyledBadge>
       ),
     },
-    { name: "Home", path: "/",icon:<Home/> },
+    
     { name: "Favorite", path: "/fovaritepage" ,icon:<Favorite/>},
   ];
 
