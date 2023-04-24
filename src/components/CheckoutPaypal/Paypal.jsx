@@ -25,7 +25,7 @@ export default function Paypal() {
             onError:(err)=>{
                 console.log(err)
             }
-        }).render(paypal.current)
+        }).render(paypal.current) 
     },[])
   return (
     <div>
