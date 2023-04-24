@@ -13,6 +13,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import CheckOut from "components/CheckoutPaypal/CheckOut";
 export default function Cart() {
   // @ts-ignore
   const { insertedProducts } = useSelector((state) => state.counter);
@@ -145,13 +146,12 @@ export default function Cart() {
           <Typography>pieces </Typography>
           <Typography>{totalQuantity}</Typography>
         </Stack>
-        <Button
-          sx={{ mt: 2, mx: "auto", display: "block" }}
-          variant="contained"
-        >
-          checkOut
-        </Button>
       </Paper>
+      <Box
+          sx={{ mt: 2, mx: "auto", display: "block" }}
+        >
+          <CheckOut/>
+        </Box>
     </Box>
   );
 }
