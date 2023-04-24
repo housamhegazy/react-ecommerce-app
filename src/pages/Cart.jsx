@@ -150,7 +150,7 @@ export default function Cart() {
       <Box
           sx={{ mt: 2, mx: "auto", display: "block" }}
         >
-          <CheckOut/>
+          <CheckOut price= {totalPrice.toFixed(2)}/>
         </Box>
     </Box>
   );

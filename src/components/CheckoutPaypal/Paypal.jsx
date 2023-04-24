@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-export default function Paypal() {
+export default function Paypal({price}) {
     const paypal = useRef(null)
     useEffect(()=>{
         // @ts-ignore
@@ -12,7 +12,7 @@ export default function Paypal() {
                             description:"cool looking table",
                             amount:{
                                 currency_code:"CAD",
-                                value:650.00
+                                value:price
                             }
                         }
                     ]
@@ -26,7 +26,7 @@ export default function Paypal() {
                 console.log(err)
             }
         }).render(paypal.current) 
-    },[])
+    },[price])
   return (
     <div>
      <div ref={paypal}></div>

@@ -1,24 +1,13 @@
 import { useState } from "react";
-import { Box, Button, IconButton } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Paypal from "./Paypal";
-import { Close } from "@mui/icons-material";
-export default function CheckOut() {
+export default function CheckOut({price}) {
   const [mycheckout, setMycheckout] = useState(false);
   return (
-    <Box sx={{display:'flex',justifyContent:"center",flexDirection:"column"}}>
-
-
-      {mycheckout && <IconButton sx={{width:'20px'}} onClick={()=>{
-          setMycheckout(false)
-        }} >
-          <Close/>
-        </IconButton>
-        }
-
-
+    <Box sx={{display:'flex',justifyContent:"center",flexDirection:"column",mx:"auto"}}>
       {mycheckout ? (
-      <Box>
-        <Paypal/>
+      <Box sx={{display:'flex',justifyContent:"center",mx:"auto"}}>
+        <Paypal {...{price}}/>
       </Box>)
 
       :
