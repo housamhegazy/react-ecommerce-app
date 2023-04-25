@@ -7,6 +7,7 @@ import Loading from "./LoadingPage";
 import Errorpage from "./Errorpage";
 import Products from "components/Products";
 import { Helmet } from 'react-helmet-async';
+import Landing from "components/Landing";
 
 export default function Home() {
   const { data, error, isLoading } = useGetProductsByNameQuery();
@@ -38,6 +39,7 @@ export default function Home() {
       <title>Home</title>
       <meta name="description" content={"the largest store in saudi arabia"} />
     </Helmet>
+      <Landing/>
       <Products {...{data,navigate,favoritProducts,dispatch,insertedProducts,QuantityFunc}}/>
       </>
     );
