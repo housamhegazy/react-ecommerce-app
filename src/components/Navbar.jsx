@@ -90,15 +90,11 @@ export default function Navbar({
         >
           <MenuIcon />
         </IconButton>
-        <Link to={'/'}>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 0.5, display: { xs: "none", sm: "block",color:theme.palette.primary.main } }}
-          >
-            HEGAZY
-          </Typography>
-        </Link>
+        <Box sx={{mr:"30px"}}>
+          <Link to={'/'} >
+            <img src="./store.png" alt="store" width={"40px"}/>
+          </Link>
+        </Box>
         
 
         <Box
