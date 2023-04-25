@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import CheckOut from "components/CheckoutPaypal/CheckOut";
+import PayPal2 from "components/paypalll";
 export default function Cart() {
   // @ts-ignore
   const { insertedProducts } = useSelector((state) => state.counter);
@@ -158,7 +159,7 @@ export default function Cart() {
       </Paper>
       
       <CheckOut price= {totalPrice.toFixed(2)}/>
-      
+      {/* <PayPal2 price= {totalPrice.toFixed(2)}/> */}
     </Box>
   );
 }
