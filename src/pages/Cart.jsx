@@ -27,6 +27,15 @@ export default function Cart() {
   };
   let totalPrice = 0;
   let totalQuantity = 0;
+  if(insertedProducts.length < 1){
+    return(
+      <Stack sx={{justifyContent:"center",alignItems:"center"}}>
+    <Typography>
+      cart empty
+    </Typography>
+    </Stack>
+    )
+  }
   return (
     <Box>
       <Helmet>
@@ -147,11 +156,9 @@ export default function Cart() {
           <Typography>{totalQuantity}</Typography>
         </Stack>
       </Paper>
-      <Box
-          sx={{ mt: 2, mx: "auto", display: "block" }}
-        >
-          <CheckOut price= {totalPrice.toFixed(2)}/>
-        </Box>
+      
+      <CheckOut price= {totalPrice.toFixed(2)}/>
+      
     </Box>
   );
 }

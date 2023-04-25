@@ -1,3 +1,4 @@
+import { Stack } from "@mui/material";
 import { useEffect, useRef } from "react";
 export default function Paypal({price}) {
     const paypal = useRef(null)
@@ -28,8 +29,6 @@ export default function Paypal({price}) {
         }).render(paypal.current) 
     },[price])
   return (
-    <div>
      <div ref={paypal}></div>
-    </div>
   );
 }

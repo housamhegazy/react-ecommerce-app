@@ -4,11 +4,10 @@ import Paypal from "./Paypal";
 export default function CheckOut({price}) {
   const [mycheckout, setMycheckout] = useState(false);
   return (
-    <Box sx={{display:'flex',justifyContent:"center",flexDirection:"column",mx:"auto"}}>
+    <Box sx={{display:'flex',justifyContent:"center",mx:"auto",mt:"20px"}}>
       {mycheckout ? (
-      <Box sx={{display:'flex',justifyContent:"center",mx:"auto"}}>
         <Paypal {...{price}}/>
-      </Box>)
+      )
 
       :
       (<Button variant="outlined"

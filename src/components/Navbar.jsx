@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, IconButton, Typography, Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
@@ -90,13 +90,16 @@ export default function Navbar({
         >
           <MenuIcon />
         </IconButton>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 0.5, display: { xs: "none", sm: "block" } }}
-        >
-          hegazy
-        </Typography>
+        <Link to={'/'}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 0.5, display: { xs: "none", sm: "block",color:theme.palette.primary.main } }}
+          >
+            HEGAZY
+          </Typography>
+        </Link>
+        
 
         <Box
           sx={{
